@@ -6,18 +6,21 @@ Bu proje, sınırlı alanı olan bir otoparkın yönetimini sağlamak için geli
 
 - Park alanı durumu takibi
 - MVC yapısında geliştirilmiş web arayüzü
-- 
+  
 ## Çalışma Mantığı
+
 Öncelikli Olarak A otoparkından başlayarak sırasıyla B ve C otoparkları dolmaya başlar. Her otopark farklı boyutlardaki bögelerden oluşmaktadır.
+
 ## Gereksinimler
 - .NET Core SDK 6.0 ve üzeri
 - SQL Server (Veritabanı dosyası `.bacpac` formatındadır)
-- Microsoft.EntityFrameworkCore 8.0.8
-- Microsoft.EntityFrameworkCore.InMemory 8.0.8
-- Microsoft.EntityFrameworkCore.Tools 8.0.8
-- Microsoft.EntityFrameworkCore.SqlServer8.0.8
+- Microsoft.EntityFrameworkCore *8.0.8*
+- Microsoft.EntityFrameworkCore.InMemory *8.0.8*
+- Microsoft.EntityFrameworkCore.Tools *8.0.8*
+- Microsoft.EntityFrameworkCore.SqlServer *8.0.8*
 - xunit
 - xunit.runner.visualstudio (Opsiyonel)
+  
 ## Kurulum
 
 1. Projeyi GitHub'dan klonlayın:
