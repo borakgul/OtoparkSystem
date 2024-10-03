@@ -1,0 +1,56 @@
+﻿@model IEnumerable<basics.Models.BölgeGiris>
+
+@{
+    ViewBag.Title = "Araç Çıkış";
+}
+
+<h2 class="text-center">Park Halindeki Araçların Çıkışı</h2>
+
+<!-- Araç Çıkış Tablosu -->
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+            <th>Araba Plaka</th>
+            <th>Araba Boyut</th>
+            <th>Bölge</th>
+            <th>Giriş Zamanı</th>
+            <th>Çıkış Yap</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var giris in Model)
+        {
+            <tr>
+                <td>@giris.Araba?.ArabaPlaka</td>
+                <td>@giris.Araba?.Boyut</td>
+                <td>@giris.Bölge?.Id</td>
+                <td>@(giris.GirisZamani?.ToString("g") ?? "Giriş zamanı yok")</td>
+                <td>
+                    <form asp-action="AracCikis" asp-controller="AracKayit" method="post">
+                        <input type="hidden" name="arabaId" value="@giris.ArabaId" />
+                        <button type="submit" class="btn btn-danger">Çıkış Yap</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- TempData ile Başarı veya Hata Mesajını Göster -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        window.onload = function () {
+            alert('@TempData["SuccessMessage"]');
+        };
+    </script>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        window.onload = function () {
+            alert('@TempData["ErrorMessage"]');
+        };
+    </script>
+}

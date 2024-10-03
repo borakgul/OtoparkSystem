@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Giriş Çıkış ve Otopark Kazanç Raporu";
+    var girisCikisRapor = ViewBag.GirisCikisRapor as IEnumerable<basics.ViewModels.GirisCikisRaporViewModel>;
+    var otoparkKazancRaporu = ViewBag.OtoparkKazancRaporu as IEnumerable<basics.ViewModels.OtoparkKazancRaporuViewModel>;
+}
+
+<h2>Giriş Çıkış Yapmış Araçlar ve Ücretleri</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Araba Plaka</th>
+            <th>Araba Boyut</th>
+            <th>Otopark</th>
+            <th>Giriş Zamanı</th>
+            <th>Çıkış Zamanı</th>
+            <th>Ücret (TL)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (girisCikisRapor != null)
+        {
+            foreach (var item in girisCikisRapor)
+            {
+                <tr>
+                    <td>@item.ArabaPlaka</td>
+                    <td>@item.ArabaBoyut</td>
+                    <td>@item.OtoparkAdi</td>
+                    <td>@item.GirisZamani.ToString("g")</td>
+                    <td>@item.CikisZamani.ToString("g")</td>
+                    <td>@item.Ucret.ToString("F2")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<h2>Otoparklara Göre Toplam Kazanç</h2>
+
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>Otopark Adı</th>
+            <th>Toplam Kazanç (TL)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (otoparkKazancRaporu != null)
+        {
+            foreach (var item in otoparkKazancRaporu)
+            {
+                <tr>
+                    <td>@item.OtoparkAdi</td>
+                    <td>@item.ToplamKazanc.ToString("F2")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

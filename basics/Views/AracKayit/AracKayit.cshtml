@@ -1,0 +1,33 @@
+﻿
+ 
+ @model basics.Models.ArabaKayitİnfo
+
+@{
+    ViewBag.Title = "Araç Kayıt";
+}
+
+<h1 class="h4 text-center">Araç Kayıt Ekranı</h1>
+
+<form method="post" class="p-3">
+    <div class="mb-3">
+        <label asp-for="Plaka" class="form-label">Plaka Girişi</label>
+        <input asp-for="Plaka" class="form-control" />
+        <span asp-validation-for="Plaka" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Size" class="form-label">Boyut Seçimi</label>
+        <select asp-for="Size" class="form-control">
+            <option value="Büyük">Büyük</option>
+            <option value="Orta">Orta</option>
+            <option value="Küçük">Küçük</option>
+        </select>
+        <span asp-validation-for="Size" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Araç Kaydet</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

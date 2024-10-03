@@ -1,0 +1,86 @@
+﻿@model basics.ViewModels.ParkHalindekiArabalarViewModel
+
+@{
+    ViewBag.Title = "Park Halindeki Araçlar ve Boş Kapasiteler";
+}
+
+<h2>Park Halindeki Araçlar</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Araba Plaka</th>
+            <th>Araba Boyut</th>
+            <th>Bölge</th>
+            <th>Otopark</th>
+            <th>Giriş Zamanı</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var giris in Model.ParkHalindekiArabalar)
+        {
+            <tr>
+                <td>@giris.Araba?.ArabaPlaka</td>
+                <td>@giris.Araba?.Boyut</td>
+                <td>@giris.Bölge?.Id</td>
+                <td>
+                    @{
+                        string otoparkAdi = giris.Bölge?.OtoparkId == 1 ? "A OTOPARKINDA" :
+                        giris.Bölge?.OtoparkId == 2 ? "B OTOPARKINDA" :
+                        giris.Bölge?.OtoparkId == 3 ? "C OTOPARKINDA" : "Belirtilmemiş";
+                    }
+                    @otoparkAdi
+                </td>
+                <td>@(giris.GirisZamani?.ToString("g") ?? "Giriş zamanı yok")</td>
+                <td>
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Otopark ve Bölge Boş Kapasiteleri</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Otopark</th>
+            <th>Bölge ID</th>
+            <th>Küçük Boş Yer</th>
+            <th>Orta Boş Yer</th>
+            <th>Büyük Boş Yer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kapasite in Model.BosKapasiteler)
+        {
+            <tr>
+                <td>@kapasite.OtoparkAdi</td>
+                <td>@kapasite.BölgeID</td>
+                <td>@kapasite.KücükBos</td>
+                <td>@kapasite.OrtaBos</td>
+                <td>@kapasite.BüyükBos</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        window.onload = function () {
+            alert('@TempData["SuccessMessage"]');
+        };
+    </script>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        window.onload = function () {
+            alert('@TempData["ErrorMessage"]');
+        };
+    </script>
+}

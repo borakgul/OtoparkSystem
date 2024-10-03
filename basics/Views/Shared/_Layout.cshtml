@@ -1,0 +1,87 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewBag.Title - Otopark Sistemi</title>
+
+    <!-- Bootstrap CSS ve FontAwesome -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <!-- Özel CSS dosyanız (varsa) -->
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+        /* Sayfanın tam yüksekliğe sahip olması ve içerik ile footer'ın uygun şekilde konumlanması için */
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1; /* İçerik bölümünün esnek bir yüksekliğe sahip olmasını sağlar */
+        }
+
+        footer {
+            margin-top: auto; /* Footer'ın sayfanın en altına yerleşmesini sağlar */
+        }
+    </style>
+</head>
+<body>
+    <!-- Üst Bilgi ve Navigasyon Bar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="/">Otopark Sistemi</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Index"><i class="fas fa-home"></i> Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/AracKayit/AracKayit"><i class="fas fa-car"></i> Araç Kayıt</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/ParkHalindekiArabalar"><i class="fas fa-parking"></i> Park Halindeki Arabalar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+    <!-- Alt Bilgi -->
+    <footer class="bg-light text-center text-lg-start mt-5 p-3 border-top">
+        <div class="container">
+            <span class="text-muted">© 2024 Otopark Sistemi - Bora AKGÜL</span>
+        </div>
+    </footer>
+
+    <!-- jQuery ve Bootstrap JavaScript dosyaları -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts Bölümü -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

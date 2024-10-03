@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Araç Çıkış Sonucu";
+}
+
+<div class="container mt-5">
+    <!-- Çıkış Sonucu Başlığı -->
+    <div class="card shadow-sm p-4 bg-light text-center">
+        <h2 class="display-6 text-success">Araç Çıkış Sonucu</h2>
+
+        <!-- Çıkış Durumu Mesajı -->
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success mt-4">
+                <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+            </div>
+        }
+        else if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger mt-4">
+                <i class="fas fa-times-circle"></i> @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <!-- Ana Menüye Dön Butonu -->
+        <div class="mt-4">
+            <a class="btn btn-primary btn-lg" href="/Home/Index">
+                <i class="fas fa-arrow-left"></i> Ana Menüye Dön
+            </a>
+        </div>
+    </div>
+</div>

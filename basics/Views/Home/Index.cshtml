@@ -1,0 +1,94 @@
+﻿@model IEnumerable<basics.ViewModels.OtoparkViewModel>
+
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+<main class="container mt-5">
+
+    <div class="card shadow-sm p-4 mb-4 bg-light text-center">
+        <h1 class="display-4 text-primary">Otopark Kayıt Sistemi</h1>
+        <h2 class="text-secondary">@ViewData["selamlama"], @ViewData["UserName"]!</h2>
+        <p class="lead">Araç Kayıt ve Yönetim Sistemi</p>
+
+        @* Otopark Fiyatları Tablosu *@
+        <div class="table-responsive mt-4">
+            <table class="table table-bordered table-hover">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Otopark</th>
+                        <th>Küçük Araç (Saatlik Ücret)</th>
+                        <th>Orta Araç (Saatlik Ücret)</th>
+                        <th>Büyük Araç (Saatlik Ücret)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var otopark in Model)
+                    {
+                        <tr>
+                            <td>@otopark.OtoparkAdi</td>
+                            <td>@otopark.KücükArabaPara TL</td>
+                            <td>@otopark.OrtaArabaPara TL</td>
+                            <td>@otopark.BüyükArabaPara TL</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @* İşlem Butonları *@
+    <div class="row d-flex align-items-stretch mt-4">
+        @* Araç Kayıt *@
+        <div class="col-lg-3 mb-3">
+            <div class="card p-4 h-100 shadow-sm text-center d-flex flex-column">
+                <div class="card-body d-flex flex-column">
+                    <h4 class="card-title text-primary mb-3">Araç Kayıt</h4>
+                    <p class="card-text mb-4">Otoparka yeni araç eklemek için bu butona tıklayın.</p>
+                    <a class="btn btn-primary btn-lg mt-auto" href="/AracKayit/AracKayit">
+                        <i class="fas fa-car-side"></i> Araç Kaydet
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        @* Araç Çıkış *@
+        <div class="col-lg-3 mb-3">
+            <div class="card p-4 h-100 shadow-sm text-center d-flex flex-column">
+                <div class="card-body d-flex flex-column">
+                    <h4 class="card-title text-danger mb-3">Araç Çıkış</h4>
+                    <p class="card-text mb-4">Otoparktan çıkış yapacak aracı buradan seçebilirsiniz.</p>
+                    <a class="btn btn-danger btn-lg mt-auto" href="/AracKayit/AracCikis">
+                        <i class="fas fa-sign-out-alt"></i> Araç Çıkış
+                    </a>
+                </div>
+            </div>
+        </div>
+
+       @*  Giriş-Çıkış Raporu *@
+        <div class="col-lg-3 mb-3">
+            <div class="card p-4 h-100 shadow-sm text-center d-flex flex-column">
+                <div class="card-body d-flex flex-column">
+                    <h4 class="card-title text-warning mb-3">Giriş-Çıkış Raporu</h4>
+                    <p class="card-text mb-4">Giriş-Çıkış yapmış araçları ve faturaları görüntüleyin.</p>
+                    <a class="btn btn-warning btn-lg mt-auto" href="/Home/GirisCikisRapor">
+                        <i class="fas fa-file-invoice-dollar"></i> Giriş-Çıkış ve Fatura
+                    </a>
+                </div>
+            </div>
+        </div>
+
+       @*  Park Halindeki Arabalar *@
+        <div class="col-lg-3 mb-3">
+            <div class="card p-4 h-100 shadow-sm text-center d-flex flex-column">
+                <div class="card-body d-flex flex-column">
+                    <h4 class="card-title text-success mb-3">Park Halindeki Arabalar</h4>
+                    <p class="card-text mb-4">Park alanında bulunan tüm araçları görüntüleyin.</p>
+                    <a class="btn btn-success btn-lg mt-auto" href="/Home/ParkHalindekiArabalar">
+                        <i class="fas fa-parking"></i> Park Halindeki Arabalar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
